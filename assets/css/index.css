@@ -18,16 +18,59 @@
 }
 body, html{
     width: 100vw;
+    overflow-x: hidden;
 }
+/* config */
+#bars{
+    font-size: 24px;
+    color: var(--nd-color);
+    display: none;
+}
+.title{
+    margin: 40px 0px;
+}
+.simpleCircle{
+    height: 10px;
+    width: 10px;
+    background-color: var(--st-color);
+    border-radius: 50%;
+    margin: 0px 20px;
+}
+#matchday .title:first-child{
+    color: #eeeee4;
+}
+/* menu mobile */
+.menu-mobile{
+    display: none;
+    background-color: #eeeee4;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 20px;
+}
+.menu-mobile i{
+    font-size: 1.5rem;
+}
+/* navbar */
 header{
     background-color: var(--st-color);
     border-bottom: 1px solid var(--nd-color);
+
+    box-shadow: 0px 2px 24px #888;
+}
+p{
+    font-weight: var(--light-font);
 }
 ul.nav{
     align-items: center;
     justify-content: space-between;
     background-color: var(--st-color);
-    padding: 0px 80px;
+}
+ul.nav.nav-pills{
+    height: 130px;
+    transition: all ease 0.4s;
 }
 ul.dropdown-menu{
     border-radius: 0px;
@@ -60,19 +103,15 @@ select.form-select-sm{
     border: 1px solid var(--nd-color);
     color: var(--nd-color);
 }
-/* carousel */
-div.carousel-item{
-    width: 100%;
-}
+
 /* homepage */
 #home{
     background-color: var(--nd-color);
 }
-#home .container-home{
+#home .container{
     display: grid;
     grid-template-columns: 4fr 2.5fr;
-    height: calc(100vh - 200px);
-    padding-left: 80px;
+    height: calc(100vh - 130px);
 }
 .item-container-1{
     display: flex;
@@ -80,19 +119,22 @@ div.carousel-item{
     align-items: center;
     justify-content: flex-start;
     color: var(--st-color);
+    margin-right: 80px;
 }
 .item-container-1 div p{
-    font-size: 20px;
+    font-size: 17px;
     font-weight: var(--light-font);
+    text-align: justify;
 }
 .item-container-1 div h1{
-    font-size: 50px;
+    font-size: 40px;
 }
 .item-container-2{
     background-color: #791030;
+    height: 100%;
 }
 .item-container-2 > div{
-    padding: 80px;
+    padding: 0px 80px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -112,7 +154,7 @@ div.carousel-item{
 }
 .line-home-default{
     height: 1px;
-    width: 27%;
+    width: 20%;
     background-color: var(--st-color); 
 }
 .img--home img{
@@ -125,10 +167,145 @@ div.carousel-item{
     font-size: 50px;
     font-weight: var(--medium-font);
 }
-.simpleCircle{
-    height: 10px;
-    width: 10px;
-    background-color: var(--st-color);
-    border-radius: 50%;
-    margin: 0px 20px;
+
+/* news */
+.newsContainer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    padding-bottom: 40px;
+}
+.new img{
+    width: 100%;
+}
+.new h4{
+    margin: 20px 0px 0px 0px;
+}
+/* matchday */
+#matchday{
+    background-color: #8a1538;
+    height: max-content;
+    padding: 60px 0px;
+}
+.match{
+    background-color: #eeeee4;
+    box-shadow: 7px 7px 14px #791030;
+    width: 100%;
+    padding: 20px;
+}
+.contentMatch, .keyInfoMatch{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.keyInfoMatch{
+    flex-direction: column;
+}
+.flex-match{
+    display: flex;
+    width: 100%;
+    gap: 40px;
+    padding-bottom: 20px;
+}
+div.team-01, div.team-02{
+    height: 80px;
+    width: 80px;
+}
+div.team-01 img, div.team-02 img{
+    width: inherit;
+    height: inherit;
+}
+
+/* footer */
+footer p{
+    width: 100%;
+    text-align: center;
+}
+footer .container{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0px;
+}
+.footer-fract ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.footer-fract li a{
+    color: black;
+    text-decoration: none;
+    font-weight: var(--light-font);
+}
+
+/* responsividade */
+
+@media(max-width:1200px){
+    li.nav-item{
+        display: none;
+    }
+    #home .container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 80px 0px;
+    }
+    .item-container-1{
+        margin: 20px 0px;
+    }
+    #bars{
+        display: block;
+    }
+}
+@media(max-width:1000px){
+    .flex-match{
+        flex-direction: column;
+    }
+}
+@media(max-width:990px){
+    #home .container{
+        height: max-content;
+    }
+}
+@media(max-width:768px){
+    .newsContainer{
+        grid-template-columns: 1fr;
+    }
+    footer .container{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .footer-fract{
+        width: 100%;
+        margin: 20px 0px;
+    }
+    .footer-fract ul li,
+    .footer-fract h6{
+        text-align: center;
+    }
+}
+@media(max-width:600px){
+    .countdown--home{
+        font-size: 2rem;
+    }
+}
+@media(max-width:480px){
+    .line-home{
+        width: 100%;
+        justify-content: center;
+    }
+    .line-home-default{
+        display: none;
+    }
+    ul.nav.nav-pills div:first-child img{
+        width: 150px;
+    }
+}
+@media(max-width: 360px){
+    .countdown--home{
+        font-size: 1.2rem;
+    }
+    .line-home h3{
+        font-size: 1.2xem;
+    }
 }
